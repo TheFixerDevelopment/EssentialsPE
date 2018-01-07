@@ -43,7 +43,7 @@ class GetPos extends BaseCommand{
                 return false;
             }
         }
-        $sender->sendMessage(TextFormat::GREEN . ($player === $sender ? "§cI'm sorry, but this command has been disabled due to some issues.");
+        $sender->sendMessage(TextFormat::GREEN . "§cI'm sorry, but this command has been disabled due to some issues.");
         return true;
     }
 }
