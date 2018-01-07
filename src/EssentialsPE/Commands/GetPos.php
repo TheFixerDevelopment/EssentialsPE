@@ -15,7 +15,7 @@ class GetPos extends BaseCommand{
      * @param BaseAPI $api
      */
     public function __construct(BaseAPI $api){
-        parent::__construct($api, "getpos", "Get your/other's position", "[player]", true, "getlocation", "getloc"]);
+        parent::__construct($api, "getpos", "Get your/other's position", "[player]", true, ["getlocation", "getloc"]);
         $this->setPermission("essentials.getpos.use");
     }
 
