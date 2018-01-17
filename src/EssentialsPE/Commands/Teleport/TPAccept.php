@@ -34,23 +34,23 @@ class TPAccept extends BaseCommand{
             return false;
         }
         if(!($request = $this->getAPI()->hasARequest($sender))){
-            $sender->sendMessage(TextFormat::RED . "[Error] You don't have any request yet");
+            $sender->sendMessage(TextFormat::RED . "[Error] §2You don't have any request yet");
             return false;
         }
         switch(count($args)){
             case 0:
                 if(!($player = $this->getAPI()->getPlayer(($name = $this->getAPI()->getLatestRequest($sender))))){
-                    $sender->sendMessage(TextFormat::RED . "[Error] Request unavailable");
+                    $sender->sendMessage(TextFormat::RED . "[Error] §2Request unavailable");
                     return false;
                 }
                 break;
             case 1:
                 if(!($player = $this->getAPI()->getPlayer($args[0]))){
-                    $sender->sendMessage(TextFormat::RED . "[Error] Player not found");
+                    $sender->sendMessage(TextFormat::RED . "[Error] §2Player not found");
                     return false;
                 }
                 if(!($request = $this->getAPI()->hasARequestFrom($sender, $player))){
-                    $sender->sendMessage(TextFormat::RED . "[Error] You don't have any requests from " . TextFormat::AQUA . $player->getDisplayName());
+                    $sender->sendMessage(TextFormat::RED . "[Error] §2You don't have any requests from§3 " . TextFormat::AQUA . $player->getDisplayName());
                     return false;
                 }
                 break;
@@ -59,8 +59,8 @@ class TPAccept extends BaseCommand{
                 return false;
                 break;
         }
-        $player->sendMessage(TextFormat::AQUA . $sender->getDisplayName() . TextFormat::GREEN . " accepted your teleport request! Teleporting...");
-        $sender->sendMessage(TextFormat::GREEN . "Teleporting...");
+        $player->sendMessage(TextFormat::AQUA . $sender->getDisplayName() . TextFormat::GREEN . " §daccepted your teleport request! Teleporting...");
+        $sender->sendMessage(TextFormat::GREEN . "§dTeleporting to §5" . TextFormat::DARK_PINK . $sender->getDisplayName() . TextFormat::PINK . " §dsuccesfully!");
         $request = $this->getAPI()->hasARequestFrom($sender, $player);
         if($request === "tphere"){
             $sender->teleport($player);
