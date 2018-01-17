@@ -28,7 +28,7 @@ class Gamemode extends BaseOverrideCommand{
         if(!$this->testPermission($sender)){
             return false;
         }
-        if(strtolower($alias) !== "gamemode" {
+        if(strtolower($alias) !== "gamemode"){
             if(isset($args[0])){
                 $args[1] = $args[0];
                 unset($args[0]);
