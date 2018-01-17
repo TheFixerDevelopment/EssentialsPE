@@ -34,23 +34,23 @@ class TPDeny extends BaseCommand{
             return false;
         }
         if(!($request = $this->getAPI()->hasARequest($sender))){
-            $sender->sendMessage(TextFormat::RED . "[Error] You don't have any request yet");
+            $sender->sendMessage(TextFormat::RED . "[Error] §2You don't have any request yet");
             return false;
         }
         switch(count($args)){
             case 0:
                 if(!($player = $this->getAPI()->getPlayer(($name = $this->getAPI()->getLatestRequest($sender))))){
-                    $sender->sendMessage(TextFormat::RED . "[Error] Request unavailable");
+                    $sender->sendMessage(TextFormat::RED . "[Error] §2Request unavailable");
                     return false;
                 }
                 break;
             case 1:
                 if(!($player = $this->getAPI()->getPlayer($args[0]))){
-                    $sender->sendMessage(TextFormat::RED . "[Error] Player not found");
+                    $sender->sendMessage(TextFormat::RED . "[Error] §2Player not found");
                     return false;
                 }
                 if(!($request = $this->getAPI()->hasARequestFrom($sender, $player))){
-                    $sender->sendMessage(TextFormat::RED . "[Error] You don't have any requests from " . TextFormat::AQUA . $player->getName());
+                    $sender->sendMessage(TextFormat::RED . "[Error] §2You don't have any requests from§3 " . TextFormat::AQUA . $player->getName());
                     return false;
                 }
                 break;
@@ -59,8 +59,8 @@ class TPDeny extends BaseCommand{
                 return false;
                 break;
         }
-        $player->sendMessage(TextFormat::AQUA . $sender->getDisplayName() . TextFormat::RED . " denied your teleport request");
-        $sender->sendMessage(TextFormat::GREEN . "Denied " . TextFormat::AQUA . $player->getDisplayName() . (substr($player->getDisplayName(), -1, 1) === "s" ? "'" : "'s") . TextFormat::RED . " teleport request");
+        $player->sendMessage(TextFormat::AQUA . $sender->getDisplayName() . TextFormat::RED . " §bdenied your teleport request");
+        $sender->sendMessage(TextFormat::GREEN . "§bDenied§3 " . TextFormat::AQUA . $player->getDisplayName() . (substr($player->getDisplayName(), -1, 1) === "s" ? "'" : "'s") . TextFormat::RED . " §bteleport request");
         $this->getAPI()->removeTPRequest($player, $sender);
         return true;
     }
