@@ -14,8 +14,8 @@ class Gamemode extends BaseOverrideCommand{
      * @param BaseAPI $api
      */
     public function __construct(BaseAPI $api){
-        parent::__construct($api, "gamemode", "Change player gamemode", "<mode> [player]", true, ["gm", "gma", "gmc", "gms", "gmt", "adventure", "creative", "survival", "spectator", "viewer"]);
-        $this->setPermission("essentials.gamemode.use");
+        parent::__construct($api, "gamemode", "Change player gamemode", "<mode> [player]", true, ["gma", "gmc", "gms", "gmt", "adventure", "creative", "survival", "spectator", "viewer"]);
+        $this->setPermission("essentials.gamemode.use.*");
     }
 
     /**
@@ -28,7 +28,7 @@ class Gamemode extends BaseOverrideCommand{
         if(!$this->testPermission($sender)){
             return false;
         }
-        if(strtolower($alias) !== "gamemode" && strtolower($alias) !== "gm"){
+        if(strtolower($alias) !== "gamemode" {
             if(isset($args[0])){
                 $args[1] = $args[0];
                 unset($args[0]);
@@ -61,7 +61,7 @@ class Gamemode extends BaseOverrideCommand{
             return false;
         }
         if(isset($args[1]) && !($player = $this->getAPI()->getPlayer($args[1]))){
-            $sender->sendMessage(TextFormat::RED . "[Error] Player not found");
+            $sender->sendMessage(TextFormat::RED . "[Error] §2Player not found");
             return false;
         }
         if($sender->getName() !== $player->getName() && !$sender->hasPermission("essentials.gamemode.other")) {
@@ -82,7 +82,7 @@ class Gamemode extends BaseOverrideCommand{
                     $gm = (int)$args[0];
                     break;
                 default:
-                    $sender->sendMessage(TextFormat::RED . "[Error] Please specify a valid gamemode");
+                    $sender->sendMessage(TextFormat::RED . "[Error] §2Please specify a valid gamemode");
                     return false;
                     break;
             }
@@ -119,7 +119,7 @@ class Gamemode extends BaseOverrideCommand{
             return false;
         }
         $player->setGamemode($gm);
-        $player->sendMessage(TextFormat::YELLOW . "You're now in " . $gmString);
+        $player->sendMessage(TextFormat::YELLOW . "§dYou're now in§5 " . $gmString);
         if($player !== $sender){
             $sender->sendMessage(TextFormat::GREEN . $player->getDisplayName() . " is now in " . $gmString);
         }
@@ -128,12 +128,12 @@ class Gamemode extends BaseOverrideCommand{
 
     public function sendUsage(CommandSender $sender, string $alias): void{
         $usage = $this->usageMessage;
-        if(strtolower($alias) !== "gamemode" && strtolower($alias) !== "gm"){
+        if(strtolower($alias) !== "gamemode"){
             $usage = str_replace("<mode> ", "", $usage);
         }
         if(!$sender instanceof Player){
             $usage = str_replace("[player]", "<player>", $usage);
         }
-        $sender->sendMessage(TextFormat::RED . "Usage: " . TextFormat::GRAY . "/$alias $usage");
+        $sender->sendMessage(TextFormat::RED . "§bPlease use:§a " . TextFormat::GRAY . "/$alias $usage");
     }
 } 
