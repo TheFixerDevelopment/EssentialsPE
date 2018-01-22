@@ -1445,7 +1445,7 @@ class BaseAPI{
      * @return null|Player
      */
     public function getPlayer($player): ?Player{
-        if(!Player::isValidUserName($player)){
+        if (!Player::isValidUserName($player)){
             return null;
         }
         $player = strtolower($player);
