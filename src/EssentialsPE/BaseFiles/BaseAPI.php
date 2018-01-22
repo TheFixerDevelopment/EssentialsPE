@@ -335,7 +335,7 @@ class BaseAPI{
         if(!$this->getEssentialsPEPlugin()->getConfig()->getNested("afk.broadcast")){
             return;
         }
-        $message = TextFormat::DARK_PURPLE . $player->getDisplayName() . " §dis " . ($this->isAFK($player) ? "§5now" : "§3no longer") . " &dAFK";
+        $message = TextFormat::DARK_PURPLE . $player->getDisplayName() . " §ais " . ($this->isAFK($player) ? "§2now" : "§3no longer") . " §aAFK";
         $this->getServer()->getLogger()->info($message);
         foreach($this->getServer()->getOnlinePlayers() as $p){
             if($p !== $player){
